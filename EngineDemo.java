@@ -1,5 +1,5 @@
 public class EngineDemo {
-    public static void main(String[] args) {
+    public static void main(String[] args) { 
         Engine[] engines = new Engine[3];
 
         engines[0] = new InternalCombustionEngine(150, "Petrol", 4, 2.0);

@@ -1,5 +1,4 @@
-
-abstract class Norm {
+abstract class AbstractNorm {
     public abstract double calculateModule();
     public abstract double calculateNorm();
 
@@ -10,11 +9,11 @@ abstract class Norm {
     public abstract boolean equals(Object obj);
 }
 
-class Vector2D extends Norm {
+class Vector2DNew extends AbstractNorm {
     private double x;
     private double y;
 
-    public Vector2D(double x, double y) {
+    public Vector2DNew(double x, double y) {
         this.x = x;
         this.y = y;
     }
@@ -32,24 +31,24 @@ class Vector2D extends Norm {
 
     @Override
     public String toString() {
-        return "Vector2D(" + x + ", " + y + ")";
+        return "Vector2DNew(" + x + ", " + y + ")";
     }
 
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
-        Vector2D vector2D = (Vector2D) obj;
+        Vector2DNew vector2D = (Vector2DNew) obj;
         return Double.compare(vector2D.x, x) == 0 && Double.compare(vector2D.y, y) == 0;
     }
 }
 
-class Vector3D extends Norm {
+class Vector3DNew extends AbstractNorm {
     private double x;
     private double y;
     private double z;
 
-    public Vector3D(double x, double y, double z) {
+    public Vector3DNew(double x, double y, double z) {
         this.x = x;
         this.y = y;
         this.z = z;
@@ -68,14 +67,14 @@ class Vector3D extends Norm {
 
     @Override
     public String toString() {
-        return "Vector3D(" + x + ", " + y + ", " + z + ")";
+        return "Vector3DNew(" + x + ", " + y + ", " + z + ")";
     }
 
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
-        Vector3D vector3D = (Vector3D) obj;
+        Vector3DNew vector3D = (Vector3DNew) obj;
         return Double.compare(vector3D.x, x) == 0 &&
                Double.compare(vector3D.y, y) == 0 &&
                Double.compare(vector3D.z, z) == 0;
@@ -84,11 +83,12 @@ class Vector3D extends Norm {
 
 public class NormDemo {
     public static void main(String[] args) {
-        Norm[] vectors = new Norm[3];
-        vectors[0] = new Vector2D(3, 4);   
-        vectors[1] = new Vector3D(1, 2, 3); 
-        vectors[2] = new Vector3D(5, 6, 7); 
-        for (Norm vector : vectors) {
+        AbstractNorm[] vectors = new AbstractNorm[3];
+        vectors[0] = new Vector2DNew(3, 4);   
+        vectors[1] = new Vector3DNew(1, 2, 3); 
+        vectors[2] = new Vector3DNew(5, 6, 7); 
+        
+        for (AbstractNorm vector : vectors) {
             System.out.println(vector.toString());
             System.out.println("Module: " + vector.calculateModule());
             System.out.println("Norm: " + vector.calculateNorm());
