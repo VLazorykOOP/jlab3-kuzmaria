@@ -8,8 +8,10 @@ interface Norm {
     @Override
     boolean equals(Object obj);
 }
-
-class Vector2D implements Norm {
+interface  R{
+    double max(); 
+}
+class Vector2D implements Norm, R {
     private double x;
     private double y;
 
@@ -18,6 +20,11 @@ class Vector2D implements Norm {
         this.y = y;
     }
 
+      @Override
+    public double max {
+        return x>y?x:y;
+    }
+    
     @Override
     public double calculateModule() {
         return Math.sqrt(x * x + y * y);
